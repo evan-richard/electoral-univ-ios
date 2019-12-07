@@ -3,20 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2006984923482348003F1882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006984823482348003F1882 /* AppDelegate.swift */; };
 		2006984B23482348003F1882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006984A23482348003F1882 /* SceneDelegate.swift */; };
-		2006984D23482348003F1882 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006984C23482348003F1882 /* FirstViewController.swift */; };
-		2006984F23482348003F1882 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006984E23482348003F1882 /* SecondViewController.swift */; };
+		2006984D23482348003F1882 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006984C23482348003F1882 /* FeedViewController.swift */; };
+		2006984F23482348003F1882 /* PoliciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006984E23482348003F1882 /* PoliciesViewController.swift */; };
 		2006985223482348003F1882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2006985023482348003F1882 /* Main.storyboard */; };
 		2006985523482348003F1882 /* ElectoralUniversity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2006985323482348003F1882 /* ElectoralUniversity.xcdatamodeld */; };
 		200698572348234A003F1882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200698562348234A003F1882 /* Assets.xcassets */; };
 		2006985A2348234A003F1882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200698582348234A003F1882 /* LaunchScreen.storyboard */; };
 		200698652348234A003F1882 /* ElectoralUniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200698642348234A003F1882 /* ElectoralUniversityTests.swift */; };
 		200698702348234A003F1882 /* ElectoralUniversityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006986F2348234A003F1882 /* ElectoralUniversityUITests.swift */; };
+		202D47CE235B89D500A49EB3 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D47CD235B89D500A49EB3 /* Candidate.swift */; };
+		202D47D0235B8A7F00A49EB3 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D47CF235B8A7F00A49EB3 /* Tweet.swift */; };
+		202D47D4235B8C3600A49EB3 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D47D3235B8C3600A49EB3 /* FeedTableViewCell.swift */; };
+		2037E01723960489008C6D6C /* background_dark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2037E01623960489008C6D6C /* background_dark.jpg */; };
+		2037E019239606EC008C6D6C /* background_light.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2037E018239606EC008C6D6C /* background_light.jpg */; };
+		207204632377986200C17E19 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207204622377986200C17E19 /* Issue.swift */; };
+		207204662377A0E800C17E19 /* QuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207204642377A0E800C17E19 /* QuizCollectionViewCell.swift */; };
+		207204672377A0E800C17E19 /* QuizCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 207204652377A0E800C17E19 /* QuizCollectionViewCell.xib */; };
+		207204692378D8DA00C17E19 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 207204682378D8DA00C17E19 /* checkmark.png */; };
+		20AE32F02392BD5800D6EF82 /* ResultsViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE32EF2392BD5800D6EF82 /* ResultsViewContainer.swift */; };
+		20AE32F82392BEB900D6EF82 /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE32F62392BEB900D6EF82 /* ResultsCollectionViewCell.swift */; };
+		20AE32F92392BEB900D6EF82 /* ResultsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20AE32F72392BEB900D6EF82 /* ResultsCollectionViewCell.xib */; };
+		20BBD9E2238A3C2B008E9A22 /* QuizViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BBD9E1238A3C2B008E9A22 /* QuizViewContainer.swift */; };
+		20CD4F8A235BB83900BE075B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20CD4F89235BB83900BE075B /* GoogleService-Info.plist */; };
+		20E2F7BA235CF07D0025DB05 /* DefaultProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */; };
+		20F80F2F23712090002AFD42 /* libReadabilityKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F80F2E23712090002AFD42 /* libReadabilityKit.a */; };
+		5DE0B5915B84D4CA12D8FCF1 /* libPods-ElectoralUniversity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8CF2C64248D904C447D975 /* libPods-ElectoralUniversity.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B8CF2C64248D904C447D975 /* libPods-ElectoralUniversity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ElectoralUniversity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2006984523482348003F1882 /* ElectoralUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectoralUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2006984823482348003F1882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2006984A23482348003F1882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2006984C23482348003F1882 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2006984E23482348003F1882 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2006984C23482348003F1882 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		2006984E23482348003F1882 /* PoliciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliciesViewController.swift; sourceTree = "<group>"; };
 		2006985123482348003F1882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2006985423482348003F1882 /* ElectoralUniversity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElectoralUniversity.xcdatamodel; sourceTree = "<group>"; };
 		200698562348234A003F1882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +71,26 @@
 		2006986B2348234A003F1882 /* ElectoralUniversityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElectoralUniversityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2006986F2348234A003F1882 /* ElectoralUniversityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectoralUniversityUITests.swift; sourceTree = "<group>"; };
 		200698712348234A003F1882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		202D47CD235B89D500A49EB3 /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		202D47CF235B8A7F00A49EB3 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		202D47D3235B8C3600A49EB3 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		2037E01623960489008C6D6C /* background_dark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_dark.jpg; sourceTree = "<group>"; };
+		2037E018239606EC008C6D6C /* background_light.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_light.jpg; sourceTree = "<group>"; };
+		207204622377986200C17E19 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		207204642377A0E800C17E19 /* QuizCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCollectionViewCell.swift; sourceTree = "<group>"; };
+		207204652377A0E800C17E19 /* QuizCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizCollectionViewCell.xib; sourceTree = "<group>"; };
+		207204682378D8DA00C17E19 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
+		20AE32EC2392BD0800D6EF82 /* DefaultProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultProfile.png; sourceTree = "<group>"; };
+		20AE32EE2392BD3400D6EF82 /* DefaultProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DefaultProfile.png; path = ../../../../../Downloads/DefaultProfile.png; sourceTree = "<group>"; };
+		20AE32EF2392BD5800D6EF82 /* ResultsViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewContainer.swift; sourceTree = "<group>"; };
+		20AE32F62392BEB900D6EF82 /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
+		20AE32F72392BEB900D6EF82 /* ResultsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCollectionViewCell.xib; sourceTree = "<group>"; };
+		20BBD9E1238A3C2B008E9A22 /* QuizViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewContainer.swift; sourceTree = "<group>"; };
+		20CD4F89235BB83900BE075B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DefaultProfile.png; path = ../../../../Downloads/DefaultProfile.png; sourceTree = "<group>"; };
+		20F80F2E23712090002AFD42 /* libReadabilityKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReadabilityKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B41436D1AA6CF9FA6083B13A /* Pods-ElectoralUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectoralUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity.release.xcconfig"; sourceTree = "<group>"; };
+		EA49FD760A9D3054D4F62B28 /* Pods-ElectoralUniversity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectoralUniversity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F80F2F23712090002AFD42 /* libReadabilityKit.a in Frameworks */,
+				5DE0B5915B84D4CA12D8FCF1 /* libPods-ElectoralUniversity.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +127,8 @@
 				200698632348234A003F1882 /* ElectoralUniversityTests */,
 				2006986E2348234A003F1882 /* ElectoralUniversityUITests */,
 				2006984623482348003F1882 /* Products */,
+				33AE98AD714E08E58F5E99F8 /* Pods */,
+				B79139969A1FE9AD9DB1EE09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,10 +145,16 @@
 		2006984723482348003F1882 /* ElectoralUniversity */ = {
 			isa = PBXGroup;
 			children = (
+				20AE32F12392BDDB00D6EF82 /* ReusableViewCells */,
+				20AE32ED2392BD1D00D6EF82 /* FirestoreClasses */,
+				20AE32EB2392BCFB00D6EF82 /* assets */,
+				20AE32EA2392BCD200D6EF82 /* QuizViewsUI */,
+				20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */,
+				20CD4F89235BB83900BE075B /* GoogleService-Info.plist */,
 				2006984823482348003F1882 /* AppDelegate.swift */,
 				2006984A23482348003F1882 /* SceneDelegate.swift */,
-				2006984C23482348003F1882 /* FirstViewController.swift */,
-				2006984E23482348003F1882 /* SecondViewController.swift */,
+				2006984C23482348003F1882 /* FeedViewController.swift */,
+				2006984E23482348003F1882 /* PoliciesViewController.swift */,
 				2006985023482348003F1882 /* Main.storyboard */,
 				200698562348234A003F1882 /* Assets.xcassets */,
 				200698582348234A003F1882 /* LaunchScreen.storyboard */,
@@ -134,6 +182,67 @@
 			path = ElectoralUniversityUITests;
 			sourceTree = "<group>";
 		};
+		20AE32EA2392BCD200D6EF82 /* QuizViewsUI */ = {
+			isa = PBXGroup;
+			children = (
+				20BBD9E1238A3C2B008E9A22 /* QuizViewContainer.swift */,
+				20AE32EF2392BD5800D6EF82 /* ResultsViewContainer.swift */,
+			);
+			path = QuizViewsUI;
+			sourceTree = "<group>";
+		};
+		20AE32EB2392BCFB00D6EF82 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				2037E018239606EC008C6D6C /* background_light.jpg */,
+				2037E01623960489008C6D6C /* background_dark.jpg */,
+				20AE32EC2392BD0800D6EF82 /* DefaultProfile.png */,
+				20AE32EE2392BD3400D6EF82 /* DefaultProfile.png */,
+				207204682378D8DA00C17E19 /* checkmark.png */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		20AE32ED2392BD1D00D6EF82 /* FirestoreClasses */ = {
+			isa = PBXGroup;
+			children = (
+				202D47CD235B89D500A49EB3 /* Candidate.swift */,
+				207204622377986200C17E19 /* Issue.swift */,
+				202D47CF235B8A7F00A49EB3 /* Tweet.swift */,
+			);
+			path = FirestoreClasses;
+			sourceTree = "<group>";
+		};
+		20AE32F12392BDDB00D6EF82 /* ReusableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				202D47D3235B8C3600A49EB3 /* FeedTableViewCell.swift */,
+				207204642377A0E800C17E19 /* QuizCollectionViewCell.swift */,
+				207204652377A0E800C17E19 /* QuizCollectionViewCell.xib */,
+				20AE32F62392BEB900D6EF82 /* ResultsCollectionViewCell.swift */,
+				20AE32F72392BEB900D6EF82 /* ResultsCollectionViewCell.xib */,
+			);
+			path = ReusableViewCells;
+			sourceTree = "<group>";
+		};
+		33AE98AD714E08E58F5E99F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA49FD760A9D3054D4F62B28 /* Pods-ElectoralUniversity.debug.xcconfig */,
+				B41436D1AA6CF9FA6083B13A /* Pods-ElectoralUniversity.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B79139969A1FE9AD9DB1EE09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20F80F2E23712090002AFD42 /* libReadabilityKit.a */,
+				0B8CF2C64248D904C447D975 /* libPods-ElectoralUniversity.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,9 +250,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 200698742348234A003F1882 /* Build configuration list for PBXNativeTarget "ElectoralUniversity" */;
 			buildPhases = (
+				3DDD2B0866A9DD1E1D99A45F /* [CP] Check Pods Manifest.lock */,
 				2006984123482348003F1882 /* Sources */,
 				2006984223482348003F1882 /* Frameworks */,
 				2006984323482348003F1882 /* Resources */,
+				35DE3C12ADAEDF020EBD13B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,9 +349,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E2F7BA235CF07D0025DB05 /* DefaultProfile.png in Resources */,
+				2037E01723960489008C6D6C /* background_dark.jpg in Resources */,
 				2006985A2348234A003F1882 /* LaunchScreen.storyboard in Resources */,
+				20CD4F8A235BB83900BE075B /* GoogleService-Info.plist in Resources */,
+				207204672377A0E800C17E19 /* QuizCollectionViewCell.xib in Resources */,
 				200698572348234A003F1882 /* Assets.xcassets in Resources */,
 				2006985223482348003F1882 /* Main.storyboard in Resources */,
+				20AE32F92392BEB900D6EF82 /* ResultsCollectionViewCell.xib in Resources */,
+				2037E019239606EC008C6D6C /* background_light.jpg in Resources */,
+				207204692378D8DA00C17E19 /* checkmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,16 +378,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		35DE3C12ADAEDF020EBD13B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DDD2B0866A9DD1E1D99A45F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ElectoralUniversity-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2006984123482348003F1882 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2006984F23482348003F1882 /* SecondViewController.swift in Sources */,
-				2006984D23482348003F1882 /* FirstViewController.swift in Sources */,
+				2006984F23482348003F1882 /* PoliciesViewController.swift in Sources */,
+				20BBD9E2238A3C2B008E9A22 /* QuizViewContainer.swift in Sources */,
+				202D47D4235B8C3600A49EB3 /* FeedTableViewCell.swift in Sources */,
+				20AE32F82392BEB900D6EF82 /* ResultsCollectionViewCell.swift in Sources */,
+				2006984D23482348003F1882 /* FeedViewController.swift in Sources */,
 				2006984923482348003F1882 /* AppDelegate.swift in Sources */,
+				20AE32F02392BD5800D6EF82 /* ResultsViewContainer.swift in Sources */,
+				202D47D0235B8A7F00A49EB3 /* Tweet.swift in Sources */,
+				207204662377A0E800C17E19 /* QuizCollectionViewCell.swift in Sources */,
+				202D47CE235B89D500A49EB3 /* Candidate.swift in Sources */,
 				2006984B23482348003F1882 /* SceneDelegate.swift in Sources */,
 				2006985523482348003F1882 /* ElectoralUniversity.xcdatamodeld in Sources */,
+				207204632377986200C17E19 /* Issue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +608,7 @@
 		};
 		200698752348234A003F1882 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA49FD760A9D3054D4F62B28 /* Pods-ElectoralUniversity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +627,7 @@
 		};
 		200698762348234A003F1882 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B41436D1AA6CF9FA6083B13A /* Pods-ElectoralUniversity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

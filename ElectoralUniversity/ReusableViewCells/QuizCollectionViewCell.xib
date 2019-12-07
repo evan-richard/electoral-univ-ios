@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuizCollectionViewCell" id="gTV-IL-0wX" customClass="QuizCollectionViewCell" customModule="ElectoralUniversity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc2-6n-HcN">
+                        <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZuM-Hp-Imm">
+                                <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="xD7-kx-2DL">
+                                        <rect key="frame" x="-5" y="-5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="QHJ-wc-8dI"/>
+                                            <constraint firstAttribute="height" constant="40" id="oH1-Zv-tnX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="xD7-kx-2DL" firstAttribute="top" secondItem="ZuM-Hp-Imm" secondAttribute="top" constant="-5" id="16b-dI-KI1"/>
+                                    <constraint firstItem="xD7-kx-2DL" firstAttribute="leading" secondItem="ZuM-Hp-Imm" secondAttribute="leading" constant="-5" id="RoO-Bc-0NB"/>
+                                    <constraint firstAttribute="trailing" secondItem="xD7-kx-2DL" secondAttribute="trailing" constant="-5" id="VoS-wz-6b2"/>
+                                    <constraint firstAttribute="height" constant="30" id="Zrh-bQ-zmH"/>
+                                    <constraint firstAttribute="width" constant="30" id="adL-N1-h7o"/>
+                                    <constraint firstItem="xD7-kx-2DL" firstAttribute="centerY" secondItem="ZuM-Hp-Imm" secondAttribute="centerY" id="pQk-64-UtY"/>
+                                    <constraint firstAttribute="bottom" secondItem="xD7-kx-2DL" secondAttribute="bottom" constant="-5" id="wjB-9j-Ge6"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOZ-4o-d6y">
+                                <rect key="frame" x="64" y="12" width="227" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JOZ-4o-d6y" firstAttribute="centerY" secondItem="Vc2-6n-HcN" secondAttribute="centerY" id="0tG-Cs-GAV"/>
+                            <constraint firstItem="JOZ-4o-d6y" firstAttribute="leading" secondItem="ZuM-Hp-Imm" secondAttribute="trailing" constant="14" id="BRz-vl-bzd"/>
+                            <constraint firstAttribute="trailing" secondItem="JOZ-4o-d6y" secondAttribute="trailing" constant="8" id="EDG-3q-26f"/>
+                            <constraint firstItem="ZuM-Hp-Imm" firstAttribute="leading" secondItem="Vc2-6n-HcN" secondAttribute="leading" constant="20" id="Xis-VP-xm2"/>
+                            <constraint firstItem="ZuM-Hp-Imm" firstAttribute="centerY" secondItem="Vc2-6n-HcN" secondAttribute="centerY" id="x36-GA-YZc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Vc2-6n-HcN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="896-qQ-N0N"/>
+                <constraint firstAttribute="trailing" secondItem="Vc2-6n-HcN" secondAttribute="trailing" id="E3x-8p-kms"/>
+                <constraint firstItem="Vc2-6n-HcN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="avu-j9-qQv"/>
+                <constraint firstAttribute="bottom" secondItem="Vc2-6n-HcN" secondAttribute="bottom" id="nbW-wN-mxU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="m8m-Mw-lzG"/>
+            <size key="customSize" width="299" height="44"/>
+            <connections>
+                <outlet property="checkboxView" destination="ZuM-Hp-Imm" id="g7C-Ik-T2i"/>
+                <outlet property="checkmarkView" destination="xD7-kx-2DL" id="yKY-jk-q4a"/>
+                <outlet property="leadingConstraint" destination="Xis-VP-xm2" id="hwZ-8I-qk1"/>
+                <outlet property="responseLabel" destination="JOZ-4o-d6y" id="1eB-Wg-OEI"/>
+            </connections>
+            <point key="canvasLocation" x="318.11594202898556" y="92.410714285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.png" width="1024" height="1024"/>
+    </resources>
+</document>

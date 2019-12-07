@@ -8,15 +8,140 @@
 
 import UIKit
 import CoreData
+import Firebase
+
+private var dispatchGroup = DispatchGroup()
+private var downloadGroup = DispatchGroup()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    static let imageCache = NSCache<NSString, UIImage>()
+    static let db = Firestore.firestore()
+    static let downloadNotification = Notification.Name("downloadNotification")
+    
+    var issues: [Issue] = []
+    private var tweets: [Tweet] = []
+    var candidates: [String: Candidate] = [:]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        dispatchGroup.enter()
+        downloadCandidateData()
+        dispatchGroup.enter()
+        downloadTweetData()
+        dispatchGroup.enter()
+        downloadIssueData()
+        
+        dispatchGroup.notify(queue: .main) {
+            self.startDownload()
+            downloadGroup.notify(queue: .main) {
+                NotificationCenter.default.post(name: AppDelegate.downloadNotification, object: nil, userInfo: nil)
+            }
+        }
+        
         return true
+    }
+    
+    // Lock the orientation to Portrait mode for iphones
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if UIDevice.current.model.starts(with: "iPad") {
+            return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.all.rawValue)
+        } else {
+            return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.portrait.rawValue)
+        }
+    }
+    
+    func startDownload() {
+        var url: URL
+        for (_,candidate) in candidates {
+            downloadGroup.enter()
+            url = URL(string: candidate.profileImg)!
+            AppDelegate.downloadImage(url: url, completion: { (profileImage: UIImage?, error: Error?) -> Void in
+                if let _ = error {
+                    print("Failed to download image.")
+                }
+                downloadGroup.leave()
+            })
+        }
+    }
+    
+    static func downloadImage(url: URL, completion: @escaping (_ image: UIImage?, _ error: Error? ) -> Void) {
+        if let cachedImage = AppDelegate.imageCache.object(forKey: url.absoluteString as NSString) {
+            completion(cachedImage, nil)
+        } else {
+            let session = URLSession(configuration: .default)
+            let request = URLRequest(url: url)
+            let downloadPicTask = session.dataTask(with: request) { (data, response, error) in
+                // The download has finished.
+                if let e = error {
+                    completion(nil, e)
+                } else {
+                    if let _ = response as? HTTPURLResponse {
+//                        print("Downloaded profile picture with response code \(res.statusCode)")
+                        if let imageData = data {
+                            let image = UIImage(data: imageData)!
+                            AppDelegate.imageCache.setObject(image, forKey: url.absoluteString as NSString)
+                            completion(image, nil)
+                        } else {
+                            print("Couldn't get image: Image is nil")
+                        }
+                    } else {
+                        print("Couldn't get response code for some reason")
+                    }
+                }
+            }
+            downloadPicTask.resume()
+        }
+    }
+        
+    
+    func downloadCandidateData() {
+        AppDelegate.db.collection("candidates").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let candidate: Candidate = Candidate(dictionary: document.data()) {
+                        self.candidates[candidate.id] = candidate
+                    }
+                }
+            }
+            dispatchGroup.leave()
+        }
+    }
+    
+    func downloadTweetData() {
+        AppDelegate.db.collection("tweets").order(by: "timestamp", descending: true).limit(to: 50).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let tweet: Tweet = Tweet(dictionary: document.data()) {
+                        self.tweets.append(tweet)
+                    }
+                }
+                NotificationCenter.default.post(name: FeedViewController.tweetNotification, object: nil, userInfo:["tweets": self.tweets])
+            }
+            dispatchGroup.leave()
+        }
+    }
+    
+    func downloadIssueData() {
+        AppDelegate.db.collection("issues").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let issue: Issue = Issue(dictionary: document.data()) {
+                        self.issues.append(issue)
+                    }
+                }
+                self.issues.shuffle()
+            }
+            dispatchGroup.leave()
+        }
     }
 
     // MARK: UISceneSession Lifecycle
