@@ -16,6 +16,7 @@ class CalendarViewController: UIViewController {
     private var calendarViewHidden = true
 
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,12 @@ class CalendarViewController: UIViewController {
         
         self.eventListView.isHidden = false
         self.eventCalendarView.isHidden = true
+        
+        let date: Date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let dateString = ("\(dateFormatter.string(from: date))")
+        dateLabel.text = dateString
         
         setConstraints()
     }

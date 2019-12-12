@@ -108,15 +108,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Bpg-ff-4Fo">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1p-K8-4jD">
-                                <rect key="frame" x="20" y="45" width="88.5" height="41"/>
+                                <rect key="frame" x="20" y="44" width="88.5" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Bpg-ff-4Fo">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -128,9 +128,9 @@
                             <constraint firstItem="Bpg-ff-4Fo" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="UqJ-oI-f02"/>
                             <constraint firstItem="Bpg-ff-4Fo" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Wpd-fU-1y4"/>
                             <constraint firstItem="nr4-mw-449" firstAttribute="top" secondItem="pIe-0s-9EL" secondAttribute="bottom" constant="10" id="aB7-gJ-bAB"/>
+                            <constraint firstItem="W1p-K8-4jD" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="cgj-3G-E1q"/>
                             <constraint firstItem="pIe-0s-9EL" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="46" id="uJg-mp-Fcd"/>
                             <constraint firstItem="W1p-K8-4jD" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="vcA-Cq-XRe"/>
-                            <constraint firstItem="W1p-K8-4jD" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="45" id="vfW-ye-7lZ"/>
                             <constraint firstItem="pIe-0s-9EL" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="xkY-r9-SOw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -176,21 +176,22 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dN0-Sx-JYW">
-                                <rect key="frame" x="140.5" y="44" width="133" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <rect key="frame" x="152.5" y="44" width="109.5" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="dN0-Sx-JYW" firstAttribute="top" secondItem="KaU-9g-zBM" secondAttribute="top" id="MBB-dU-BNU"/>
                             <constraint firstItem="dN0-Sx-JYW" firstAttribute="centerX" secondItem="KWJ-t7-zHO" secondAttribute="centerX" id="v0A-gl-QPW"/>
-                            <constraint firstItem="dN0-Sx-JYW" firstAttribute="top" secondItem="KaU-9g-zBM" secondAttribute="top" id="zHj-gv-iwa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KaU-9g-zBM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="S6L-Sg-mU1"/>
                     <connections>
+                        <outlet property="dateLabel" destination="dN0-Sx-JYW" id="9wh-EO-2dF"/>
                         <outlet property="navigationBar" destination="Wvh-mS-PGd" id="h1a-dc-Sn3"/>
                     </connections>
                 </viewController>
