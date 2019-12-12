@@ -22,15 +22,12 @@
 		202D47D4235B8C3600A49EB3 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D47D3235B8C3600A49EB3 /* FeedTableViewCell.swift */; };
 		2037E01723960489008C6D6C /* background_dark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2037E01623960489008C6D6C /* background_dark.jpg */; };
 		2037E019239606EC008C6D6C /* background_light.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2037E018239606EC008C6D6C /* background_light.jpg */; };
-		2068B1FF23A0AB3C00EE7C05 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2068B1FE23A0AB3C00EE7C05 /* State.swift */; };
 		207204632377986200C17E19 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207204622377986200C17E19 /* Issue.swift */; };
 		207204662377A0E800C17E19 /* QuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207204642377A0E800C17E19 /* QuizCollectionViewCell.swift */; };
 		207204672377A0E800C17E19 /* QuizCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 207204652377A0E800C17E19 /* QuizCollectionViewCell.xib */; };
 		207204692378D8DA00C17E19 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 207204682378D8DA00C17E19 /* checkmark.png */; };
 		2096CAEA239D6FF6002A87B6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096CAE9239D6FF6002A87B6 /* CalendarViewController.swift */; };
 		2096CAED239D7286002A87B6 /* EventListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096CAEC239D7286002A87B6 /* EventListContainer.swift */; };
-		2096CAEF239D72CE002A87B6 /* EventCalendarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096CAEE239D72CE002A87B6 /* EventCalendarContainer.swift */; };
-		2096CAF1239D7FAB002A87B6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096CAF0239D7FAB002A87B6 /* Event.swift */; };
 		2096CAF3239D85A9002A87B6 /* EventListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096CAF2239D85A9002A87B6 /* EventListItemView.swift */; };
 		2096CAF5239D86CF002A87B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2096CAF4239D86CF002A87B6 /* CoreLocation.framework */; };
 		20AE32F02392BD5800D6EF82 /* ResultsViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE32EF2392BD5800D6EF82 /* ResultsViewContainer.swift */; };
@@ -38,6 +35,9 @@
 		20AE32F92392BEB900D6EF82 /* ResultsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20AE32F72392BEB900D6EF82 /* ResultsCollectionViewCell.xib */; };
 		20BBD9E2238A3C2B008E9A22 /* QuizViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BBD9E1238A3C2B008E9A22 /* QuizViewContainer.swift */; };
 		20CD4F8A235BB83900BE075B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20CD4F89235BB83900BE075B /* GoogleService-Info.plist */; };
+		20DF2F0F23A1F7B500D153F1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F0E23A1F7B500D153F1 /* State.swift */; };
+		20DF2F1123A1F7C200D153F1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F1023A1F7C200D153F1 /* Event.swift */; };
+		20DF2F1323A1F7F700D153F1 /* EventCalendarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F1223A1F7F700D153F1 /* EventCalendarContainer.swift */; };
 		20E2F7BA235CF07D0025DB05 /* DefaultProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */; };
 		20F80F2F23712090002AFD42 /* libReadabilityKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F80F2E23712090002AFD42 /* libReadabilityKit.a */; };
 		5DE0B5915B84D4CA12D8FCF1 /* libPods-ElectoralUniversity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8CF2C64248D904C447D975 /* libPods-ElectoralUniversity.a */; };
@@ -83,15 +83,12 @@
 		202D47D3235B8C3600A49EB3 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		2037E01623960489008C6D6C /* background_dark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_dark.jpg; sourceTree = "<group>"; };
 		2037E018239606EC008C6D6C /* background_light.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_light.jpg; sourceTree = "<group>"; };
-		2068B1FE23A0AB3C00EE7C05 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		207204622377986200C17E19 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		207204642377A0E800C17E19 /* QuizCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCollectionViewCell.swift; sourceTree = "<group>"; };
 		207204652377A0E800C17E19 /* QuizCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizCollectionViewCell.xib; sourceTree = "<group>"; };
 		207204682378D8DA00C17E19 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		2096CAE9239D6FF6002A87B6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2096CAEC239D7286002A87B6 /* EventListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListContainer.swift; sourceTree = "<group>"; };
-		2096CAEE239D72CE002A87B6 /* EventCalendarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarContainer.swift; sourceTree = "<group>"; };
-		2096CAF0239D7FAB002A87B6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2096CAF2239D85A9002A87B6 /* EventListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListItemView.swift; sourceTree = "<group>"; };
 		2096CAF4239D86CF002A87B6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		20AE32EC2392BD0800D6EF82 /* DefaultProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultProfile.png; sourceTree = "<group>"; };
@@ -101,6 +98,9 @@
 		20AE32F72392BEB900D6EF82 /* ResultsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCollectionViewCell.xib; sourceTree = "<group>"; };
 		20BBD9E1238A3C2B008E9A22 /* QuizViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewContainer.swift; sourceTree = "<group>"; };
 		20CD4F89235BB83900BE075B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20DF2F0E23A1F7B500D153F1 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		20DF2F1023A1F7C200D153F1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		20DF2F1223A1F7F700D153F1 /* EventCalendarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarContainer.swift; sourceTree = "<group>"; };
 		20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DefaultProfile.png; path = ../../../../Downloads/DefaultProfile.png; sourceTree = "<group>"; };
 		20F80F2E23712090002AFD42 /* libReadabilityKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReadabilityKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41436D1AA6CF9FA6083B13A /* Pods-ElectoralUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectoralUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity.release.xcconfig"; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				2096CAEC239D7286002A87B6 /* EventListContainer.swift */,
-				2096CAEE239D72CE002A87B6 /* EventCalendarContainer.swift */,
+				20DF2F1223A1F7F700D153F1 /* EventCalendarContainer.swift */,
 			);
 			path = CalendarViewsUI;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 				202D47CD235B89D500A49EB3 /* Candidate.swift */,
 				207204622377986200C17E19 /* Issue.swift */,
 				202D47CF235B8A7F00A49EB3 /* Tweet.swift */,
-				2096CAF0239D7FAB002A87B6 /* Event.swift */,
-				2068B1FE23A0AB3C00EE7C05 /* State.swift */,
+				20DF2F0E23A1F7B500D153F1 /* State.swift */,
+				20DF2F1023A1F7C200D153F1 /* Event.swift */,
 			);
 			path = FirestoreClasses;
 			sourceTree = "<group>";
@@ -456,18 +456,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				2006984F23482348003F1882 /* PoliciesViewController.swift in Sources */,
-				2096CAEF239D72CE002A87B6 /* EventCalendarContainer.swift in Sources */,
-				2096CAF1239D7FAB002A87B6 /* Event.swift in Sources */,
 				20BBD9E2238A3C2B008E9A22 /* QuizViewContainer.swift in Sources */,
 				202D47D4235B8C3600A49EB3 /* FeedTableViewCell.swift in Sources */,
+				20DF2F1123A1F7C200D153F1 /* Event.swift in Sources */,
 				20AE32F82392BEB900D6EF82 /* ResultsCollectionViewCell.swift in Sources */,
 				2006984D23482348003F1882 /* FeedViewController.swift in Sources */,
 				2006984923482348003F1882 /* AppDelegate.swift in Sources */,
 				20AE32F02392BD5800D6EF82 /* ResultsViewContainer.swift in Sources */,
 				202D47D0235B8A7F00A49EB3 /* Tweet.swift in Sources */,
-				2068B1FF23A0AB3C00EE7C05 /* State.swift in Sources */,
 				207204662377A0E800C17E19 /* QuizCollectionViewCell.swift in Sources */,
+				20DF2F0F23A1F7B500D153F1 /* State.swift in Sources */,
 				202D47CE235B89D500A49EB3 /* Candidate.swift in Sources */,
+				20DF2F1323A1F7F700D153F1 /* EventCalendarContainer.swift in Sources */,
 				2006984B23482348003F1882 /* SceneDelegate.swift in Sources */,
 				2006985523482348003F1882 /* ElectoralUniversity.xcdatamodeld in Sources */,
 				2096CAEA239D6FF6002A87B6 /* CalendarViewController.swift in Sources */,
