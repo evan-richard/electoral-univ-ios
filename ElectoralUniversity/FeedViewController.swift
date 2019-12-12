@@ -223,6 +223,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.refreshing = true
             
             self.dispatchGroup.enter()
+            print("Downloading older tweets...")
             downloadOlderTweets()
             
             self.dispatchGroup.notify(queue: .main) {

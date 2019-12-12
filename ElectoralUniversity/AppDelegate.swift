@@ -9,34 +9,51 @@
 import UIKit
 import CoreData
 import Firebase
+import CoreLocation
 
-private var dispatchGroup = DispatchGroup()
-private var downloadGroup = DispatchGroup()
+private var allNodesDG = DispatchGroup()
+private var imageDownloadDG = DispatchGroup()
+private var lastUpdatedDG = DispatchGroup()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     static let imageCache = NSCache<NSString, UIImage>()
     static let db = Firestore.firestore()
     static let downloadNotification = Notification.Name("downloadNotification")
+    static let fetchCompleteNotification = Notification.Name("fetchCompleteNotification")
     
+    var dbLastUpdates: [String: Date] = [:]
     var issues: [Issue] = []
-    private var tweets: [Tweet] = []
+    var tweets: [Tweet] = []
     var candidates: [String: Candidate] = [:]
+    var events: [Event] = []
+    var states: [String: State] = [:]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-        dispatchGroup.enter()
-        downloadCandidateData()
-        dispatchGroup.enter()
-        downloadTweetData()
-        dispatchGroup.enter()
-        downloadIssueData()
+        lastUpdatedDG.enter()
+        getLastUpdateTimes()
         
-        dispatchGroup.notify(queue: .main) {
+        lastUpdatedDG.notify(queue: .main) {
+            let managedContext = self.persistentContainer.viewContext
+            allNodesDG.enter()
+            self.downloadCandidateData(managedContext: managedContext)
+            allNodesDG.enter()
+            self.downloadTweetData(managedContext: managedContext)
+            allNodesDG.enter()
+            self.downloadIssueData(managedContext: managedContext)
+            allNodesDG.enter()
+            self.downloadEventData(managedContext: managedContext)
+            allNodesDG.enter()
+            self.downloadStateData(managedContext: managedContext)
+        }
+        
+        allNodesDG.notify(queue: .main) {
+            NotificationCenter.default.post(name: AppDelegate.fetchCompleteNotification, object: nil, userInfo: ["events": self.events, "states": self.states, "candidates": self.candidates, "tweets": self.tweets, "issues": self.issues])
             self.startDownload()
-            downloadGroup.notify(queue: .main) {
+            imageDownloadDG.notify(queue: .main) {
                 NotificationCenter.default.post(name: AppDelegate.downloadNotification, object: nil, userInfo: nil)
             }
         }
@@ -56,13 +73,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func startDownload() {
         var url: URL
         for (_,candidate) in candidates {
-            downloadGroup.enter()
+            imageDownloadDG.enter()
             url = URL(string: candidate.profileImg)!
             AppDelegate.downloadImage(url: url, completion: { (profileImage: UIImage?, error: Error?) -> Void in
                 if let _ = error {
                     print("Failed to download image.")
                 }
-                downloadGroup.leave()
+                imageDownloadDG.leave()
             })
         }
     }
@@ -95,24 +112,86 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             downloadPicTask.resume()
         }
     }
-        
     
-    func downloadCandidateData() {
-        AppDelegate.db.collection("candidates").getDocuments() { (querySnapshot, err) in
+    func getLastUpdateTimes() {
+        AppDelegate.db.collection("last_updates").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    if let candidate: Candidate = Candidate(dictionary: document.data()) {
-                        self.candidates[candidate.id] = candidate
-                    }
+                    self.dbLastUpdates[document.documentID] = (document.data()["last_updated"] as? Timestamp)?.dateValue()
                 }
             }
-            dispatchGroup.leave()
+            lastUpdatedDG.leave()
         }
     }
     
-    func downloadTweetData() {
+    private func getLastUpdateTime(managedContext: NSManagedObjectContext, node: String) -> Date? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LastUpdated")
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                if (data.value(forKey: "node") as! String == node) {
+                    return data.value(forKey: "timestamp") as? Date
+                }
+            }
+        } catch {
+            return nil
+        }
+        return nil
+    }
+        
+    
+    func downloadCandidateData(managedContext: NSManagedObjectContext) {
+        let lastUpdated: Date? = getLastUpdateTime(managedContext: managedContext, node: "candidates")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Candidate")
+        if ((lastUpdated != nil) && (lastUpdated! == self.dbLastUpdates["candidates"])) {
+            do {
+                let result = try managedContext.fetch(fetchRequest)
+                for data in result as! [NSManagedObject] {
+                    var responses: Dictionary<String, Int> = [:]
+                    let respRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Response")
+                    respRequest.predicate = NSPredicate(format: "candidate.id = %@", data.value(forKey: "id") as! String)
+                    do {
+                        let result = try managedContext.fetch(respRequest)
+                        for data in result as! [NSManagedObject] {
+                            responses[data.value(forKey: "id") as! String] = data.value(forKey: "stance") as? Int
+                        }
+                    } catch {
+                        print("Error = \(error.localizedDescription)")
+                    }
+                    self.candidates[data.value(forKey: "id") as! String] = Candidate(name: data.value(forKey: "name") as! String, id: data.value(forKey: "id") as! String, screenName: data.value(forKey: "screenName") as! String, profileImg: data.value(forKey: "profileImg") as! String, bannerImg: data.value(forKey: "bannerImg") as! String, responses: responses)
+                }
+            } catch {
+                print("Error = \(error.localizedDescription)")
+            }
+        } else {
+            AppDelegate.db.collection("candidates").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let candidate: Candidate = Candidate(dictionary: document.data()) {
+                            self.candidates[candidate.id] = candidate
+                        }
+                    }
+                    do {
+                        let result = try managedContext.fetch(fetchRequest)
+                        if (result.count > 0) {
+                            
+                        } else {
+                            
+                        }
+                    } catch {
+                        print("Error = \(error.localizedDescription)")
+                    }
+                }
+                allNodesDG.leave()
+            }
+        }
+    }
+    
+    func downloadTweetData(managedContext: NSManagedObjectContext) {
         AppDelegate.db.collection("tweets").order(by: "timestamp", descending: true).limit(to: 50).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -124,11 +203,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 NotificationCenter.default.post(name: FeedViewController.tweetNotification, object: nil, userInfo:["tweets": self.tweets])
             }
-            dispatchGroup.leave()
+            allNodesDG.leave()
         }
     }
     
-    func downloadIssueData() {
+    func downloadIssueData(managedContext: NSManagedObjectContext) {
         AppDelegate.db.collection("issues").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -140,7 +219,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 self.issues.shuffle()
             }
-            dispatchGroup.leave()
+            allNodesDG.leave()
+        }
+    }
+    
+    func downloadEventData(managedContext: NSManagedObjectContext) {
+        AppDelegate.db.collection("events").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let event: Event = Event(dictionary: document.data()) {
+                        self.events.append(event)
+                    }
+                }
+            }
+            allNodesDG.leave()
+        }
+    }
+    
+    func downloadStateData(managedContext: NSManagedObjectContext) {
+        AppDelegate.db.collection("states").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let state: State = State(dictionary: document.data()) {
+                        self.states[state.identifier] = state
+                    }
+                }
+            }
+            allNodesDG.leave()
         }
     }
 
