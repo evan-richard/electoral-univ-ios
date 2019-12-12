@@ -147,6 +147,57 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
+        <!--Calendar-->
+        <scene sceneID="eSk-cP-RoM">
+            <objects>
+                <viewController id="kVi-zb-Bbi" customClass="CalendarViewController" customModule="ElectoralUniversity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KWJ-t7-zHO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvh-mS-PGd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="barTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <items>
+                                    <navigationItem id="ahm-yd-1Tp">
+                                        <barButtonItem key="leftBarButtonItem" image="calendar.circle" catalog="system" id="tm1-pi-jrK">
+                                            <connections>
+                                                <action selector="swapViewAction:" destination="kVi-zb-Bbi" id="qwK-pL-7Oe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Configure" image="ellipsis" catalog="system" id="RZv-WI-pyH">
+                                            <connections>
+                                                <action selector="configureAction:" destination="kVi-zb-Bbi" id="Y6C-Ou-7y2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dN0-Sx-JYW">
+                                <rect key="frame" x="140.5" y="44" width="133" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dN0-Sx-JYW" firstAttribute="centerX" secondItem="KWJ-t7-zHO" secondAttribute="centerX" id="v0A-gl-QPW"/>
+                            <constraint firstItem="dN0-Sx-JYW" firstAttribute="top" secondItem="KaU-9g-zBM" secondAttribute="top" id="zHj-gv-iwa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KaU-9g-zBM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="S6L-Sg-mU1"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="Wvh-mS-PGd" id="h1a-dc-Sn3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JCA-av-bz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.82608695652175" y="1082.8125"/>
+        </scene>
         <!--Policies-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -276,7 +327,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Policies" image="doc" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Policies" image="pencil.and.ellipsis.rectangle" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="EZT-gw-Xam" id="1Yn-Ac-yMV"/>
                         <outlet property="policyViewContent" destination="1gp-Z7-UJW" id="nnc-Vk-Ghm"/>
@@ -302,6 +353,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="kVi-zb-Bbi" kind="relationship" relationship="viewControllers" id="5VF-Tv-9Ts"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -313,9 +365,11 @@
         <image name="DefaultProfile.png" width="685" height="720"/>
         <image name="background_light.jpg" width="1280" height="853"/>
         <image name="backward.end" catalog="system" width="64" height="60"/>
-        <image name="doc" catalog="system" width="56" height="64"/>
+        <image name="calendar" catalog="system" width="64" height="52"/>
+        <image name="calendar.circle" catalog="system" width="64" height="60"/>
         <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
         <image name="text.bubble" catalog="system" width="64" height="54"/>
     </resources>
 </document>

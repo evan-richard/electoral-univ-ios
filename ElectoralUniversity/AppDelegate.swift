@@ -9,34 +9,43 @@
 import UIKit
 import CoreData
 import Firebase
+import CoreLocation
 
-private var dispatchGroup = DispatchGroup()
-private var downloadGroup = DispatchGroup()
+private var allNodesDG = DispatchGroup()
+private var imageDownloadDG = DispatchGroup()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     static let imageCache = NSCache<NSString, UIImage>()
     static let db = Firestore.firestore()
     static let downloadNotification = Notification.Name("downloadNotification")
+    static let fetchCompleteNotification = Notification.Name("fetchCompleteNotification")
     
     var issues: [Issue] = []
     private var tweets: [Tweet] = []
     var candidates: [String: Candidate] = [:]
+    var events: [Event] = []
+    var states: [String: State] = [:]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-        dispatchGroup.enter()
-        downloadCandidateData()
-        dispatchGroup.enter()
-        downloadTweetData()
-        dispatchGroup.enter()
-        downloadIssueData()
+        allNodesDG.enter()
+        self.downloadCandidateData()
+        allNodesDG.enter()
+        self.downloadTweetData()
+        allNodesDG.enter()
+        self.downloadIssueData()
+        allNodesDG.enter()
+        self.downloadEventData()
+        allNodesDG.enter()
+        self.downloadStateData()
         
-        dispatchGroup.notify(queue: .main) {
+        allNodesDG.notify(queue: .main) {
+            NotificationCenter.default.post(name: AppDelegate.fetchCompleteNotification, object: nil, userInfo: ["events": self.events, "states": self.states, "candidates": self.candidates, "tweets": self.tweets, "issues": self.issues])
             self.startDownload()
-            downloadGroup.notify(queue: .main) {
+            imageDownloadDG.notify(queue: .main) {
                 NotificationCenter.default.post(name: AppDelegate.downloadNotification, object: nil, userInfo: nil)
             }
         }
@@ -56,13 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func startDownload() {
         var url: URL
         for (_,candidate) in candidates {
-            downloadGroup.enter()
+            imageDownloadDG.enter()
             url = URL(string: candidate.profileImg)!
             AppDelegate.downloadImage(url: url, completion: { (profileImage: UIImage?, error: Error?) -> Void in
                 if let _ = error {
                     print("Failed to download image.")
                 }
-                downloadGroup.leave()
+                imageDownloadDG.leave()
             })
         }
     }
@@ -79,11 +88,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     completion(nil, e)
                 } else {
                     if let _ = response as? HTTPURLResponse {
-//                        print("Downloaded profile picture with response code \(res.statusCode)")
                         if let imageData = data {
-                            let image = UIImage(data: imageData)!
-                            AppDelegate.imageCache.setObject(image, forKey: url.absoluteString as NSString)
-                            completion(image, nil)
+                            if let image = UIImage(data: imageData) {
+                                AppDelegate.imageCache.setObject(image, forKey: url.absoluteString as NSString)
+                                completion(image, nil)
+                            } else {
+                                completion(nil, nil)
+                            }
                         } else {
                             print("Couldn't get image: Image is nil")
                         }
@@ -95,7 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             downloadPicTask.resume()
         }
     }
-        
     
     func downloadCandidateData() {
         AppDelegate.db.collection("candidates").getDocuments() { (querySnapshot, err) in
@@ -108,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-            dispatchGroup.leave()
+            allNodesDG.leave()
         }
     }
     
@@ -124,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 NotificationCenter.default.post(name: FeedViewController.tweetNotification, object: nil, userInfo:["tweets": self.tweets])
             }
-            dispatchGroup.leave()
+            allNodesDG.leave()
         }
     }
     
@@ -140,7 +150,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 self.issues.shuffle()
             }
-            dispatchGroup.leave()
+            allNodesDG.leave()
+        }
+    }
+    
+    func downloadEventData() {
+        AppDelegate.db.collection("events").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let event: Event = Event(dictionary: document.data()) {
+                        self.events.append(event)
+                    }
+                }
+            }
+            allNodesDG.leave()
+        }
+    }
+    
+    func downloadStateData() {
+        AppDelegate.db.collection("states").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let state: State = State(dictionary: document.data()) {
+                        self.states[state.identifier] = state
+                    }
+                }
+            }
+            allNodesDG.leave()
         }
     }
 
