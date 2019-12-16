@@ -38,6 +38,8 @@
 		20DF2F0F23A1F7B500D153F1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F0E23A1F7B500D153F1 /* State.swift */; };
 		20DF2F1123A1F7C200D153F1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F1023A1F7C200D153F1 /* Event.swift */; };
 		20DF2F1323A1F7F700D153F1 /* EventCalendarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F1223A1F7F700D153F1 /* EventCalendarContainer.swift */; };
+		20DF2F1523A6EE6800D153F1 /* StatesPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F1423A6EE6800D153F1 /* StatesPopoverViewController.swift */; };
+		20DF2F1723A6F4A500D153F1 /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF2F1623A6F4A500D153F1 /* StateTableViewCell.swift */; };
 		20E2F7BA235CF07D0025DB05 /* DefaultProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */; };
 		20F80F2F23712090002AFD42 /* libReadabilityKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F80F2E23712090002AFD42 /* libReadabilityKit.a */; };
 		5DE0B5915B84D4CA12D8FCF1 /* libPods-ElectoralUniversity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8CF2C64248D904C447D975 /* libPods-ElectoralUniversity.a */; };
@@ -101,6 +103,8 @@
 		20DF2F0E23A1F7B500D153F1 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		20DF2F1023A1F7C200D153F1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		20DF2F1223A1F7F700D153F1 /* EventCalendarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarContainer.swift; sourceTree = "<group>"; };
+		20DF2F1423A6EE6800D153F1 /* StatesPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesPopoverViewController.swift; sourceTree = "<group>"; };
+		20DF2F1623A6F4A500D153F1 /* StateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
 		20E2F7B9235CF07D0025DB05 /* DefaultProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DefaultProfile.png; path = ../../../../Downloads/DefaultProfile.png; sourceTree = "<group>"; };
 		20F80F2E23712090002AFD42 /* libReadabilityKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReadabilityKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41436D1AA6CF9FA6083B13A /* Pods-ElectoralUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectoralUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-ElectoralUniversity/Pods-ElectoralUniversity.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				2006985B2348234A003F1882 /* Info.plist */,
 				2006985323482348003F1882 /* ElectoralUniversity.xcdatamodeld */,
 				2096CAE9239D6FF6002A87B6 /* CalendarViewController.swift */,
+				20DF2F1423A6EE6800D153F1 /* StatesPopoverViewController.swift */,
 			);
 			path = ElectoralUniversity;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				207204652377A0E800C17E19 /* QuizCollectionViewCell.xib */,
 				20AE32F62392BEB900D6EF82 /* ResultsCollectionViewCell.swift */,
 				20AE32F72392BEB900D6EF82 /* ResultsCollectionViewCell.xib */,
+				20DF2F1623A6F4A500D153F1 /* StateTableViewCell.swift */,
 			);
 			path = ReusableViewCells;
 			sourceTree = "<group>";
@@ -468,7 +474,9 @@
 				20DF2F0F23A1F7B500D153F1 /* State.swift in Sources */,
 				202D47CE235B89D500A49EB3 /* Candidate.swift in Sources */,
 				20DF2F1323A1F7F700D153F1 /* EventCalendarContainer.swift in Sources */,
+				20DF2F1723A6F4A500D153F1 /* StateTableViewCell.swift in Sources */,
 				2006984B23482348003F1882 /* SceneDelegate.swift in Sources */,
+				20DF2F1523A6EE6800D153F1 /* StatesPopoverViewController.swift in Sources */,
 				2006985523482348003F1882 /* ElectoralUniversity.xcdatamodeld in Sources */,
 				2096CAEA239D6FF6002A87B6 /* CalendarViewController.swift in Sources */,
 				207204632377986200C17E19 /* Issue.swift in Sources */,

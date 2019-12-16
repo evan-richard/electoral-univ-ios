@@ -10,50 +10,13 @@ import UIKit
 
 class EventListContainer: UIView, UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.filterStates.count > 0) {
-            return self.events.filter({
-                self.filterStates.contains($0.state)
-            }).count
-        } else {
-            return self.events.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventListItemView", for: indexPath) as! EventListItemView
-        let filteredEvents: [Event]
-        if (self.filterStates.count > 0) {
-            filteredEvents = self.events.filter({
-                self.filterStates.contains($0.state)
-            })
-        } else {
-            filteredEvents = self.events
-        }
-        let event = filteredEvents[indexPath.row]
-        
-        cell.dateLabel.text = event.dateStr
-        cell.eventLabel.text = event.type
-        cell.politicalPartyLabel.text = event.party
-        cell.stateNameLabel.text = self.states[event.state]?.name
-        
-        if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = UIColor.secondarySystemBackground
-        } else {
-            cell.backgroundColor = UIColor.systemBackground
-        }
-        
-        return cell
-    }
-    
-    
     private var searchBar: UISearchBar = UISearchBar()
     private var tableView: UITableView = UITableView()
     
     private let SEARCH_BAR_HEIGHT: CGFloat = 60.0
+    
     private var events: [Event] = []
     private var states: [String: State] = [:]
-    private var filterStates: [String] = []
     
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -62,11 +25,9 @@ class EventListContainer: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.register(EventListItemView.self, forCellReuseIdentifier: "EventListItemView")
         
-        self.filterStates = ["maryland"]
-        
         initUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onEventsNotification(notification:)), name: AppDelegate.fetchCompleteNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onEventsNotification(notification:)), name: CalendarViewController.calendarNotification, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -107,29 +68,16 @@ class EventListContainer: UIView, UITableViewDataSource, UITableViewDelegate {
         self.events.sort(by: {
             $0.dateStr < $1.dateStr
         })
-        addEvents(events: self.events.filter({
-            $0.state == "maryland"
-        }))
+        addEvents()
     }
     
-    private func addEvents(events: [Event]) {
-        if (events.count > 1) {
+    private func addEvents() {
+        if (self.events.count > 1) {
             self.tableView.reloadData()
-        } else if (events.count == 1) {
+        } else if (self.events.count == 1) {
             
         } else {
             
-        }
-    }
-    
-    func configureToggled(filterStates: [String]) {
-        self.filterStates = filterStates
-        if (self.filterStates.count > 0) {
-            self.addEvents(events: self.events.filter({
-                self.filterStates.contains($0.state)
-            }))
-        } else {
-            self.addEvents(events: self.events)
         }
     }
     
@@ -138,4 +86,31 @@ class EventListContainer: UIView, UITableViewDataSource, UITableViewDelegate {
         self.searchBar.endEditing(true)
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.events.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventListItemView", for: indexPath) as! EventListItemView
+        let event = self.events[indexPath.row]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateObj = dateFormatter.date(from: event.dateStr)
+        dateFormatter.dateFormat = "EEE, dd MMM yyyy"
+        let formattedDateStr = ("\(dateFormatter.string(from: dateObj!))")
+        
+        cell.dateLabel.text = formattedDateStr
+        cell.eventLabel.text = event.type
+        cell.politicalPartyLabel.text = event.party
+        cell.stateNameLabel.text = self.states[event.state]?.name
+        
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = UIColor.secondarySystemBackground
+        } else {
+            cell.backgroundColor = UIColor.systemBackground
+        }
+        
+        return cell
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     private var eventListView: EventListContainer = EventListContainer()
     private var eventCalendarView: EventCalendarContainer = EventCalendarContainer()
@@ -18,10 +18,30 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     
+    private var events: [Event] = []
+    private var states: [String: State] = [:]
+    private var popoverVC: StatesPopoverViewController? = nil
+    
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    static let calendarNotification = Notification.Name("calendarNotification")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.states = self.appDelegate.states
+        self.events = self.appDelegate.events
+        
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        popoverVC = storyboard.instantiateViewController(withIdentifier: "StatesPopoverViewController") as! StatesPopoverViewController
+        popoverVC!.modalPresentationStyle = .popover
+        popoverVC!.addCalendarObserver()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onStatesConfigNotification(notification:)), name: StatesPopoverViewController.statesNotification, object: nil)
+        
         initUI()
+        
+        NotificationCenter.default.post(name: CalendarViewController.calendarNotification, object: nil, userInfo:["states": self.states, "events": self.events.filter({ self.states[$0.state]!.displayState })])
     }
     
     private func initUI() {
@@ -55,14 +75,24 @@ class CalendarViewController: UIViewController {
         self.eventCalendarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
     }
     
+    // MARK: Notification Handlers
+    
+    @objc func onStatesConfigNotification(notification:Notification)
+    {
+        self.states = notification.userInfo?["states"] as! [String: State]
+        NotificationCenter.default.post(name: CalendarViewController.calendarNotification, object: nil, userInfo:["states": self.states, "events": self.events.filter({ self.states[$0.state]!.displayState })])
+    }
+    
     @IBAction func swapViewAction(_ sender: UIBarButtonItem) {
         self.eventCalendarView.isHidden = !self.eventCalendarView.isHidden
         self.eventListView.isHidden = !self.eventListView.isHidden
         self.eventListView.dismissKeyboard()
     }
     
-    @IBAction func configureAction(_ sender: UIBarButtonItem) {
-        self.eventListView.configureToggled(filterStates: [])
+    @IBAction func displayConfigPopover(_ sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: CalendarViewController.calendarNotification, object: nil, userInfo:["states": self.states, "events": self.events.filter({ self.states[$0.state]!.displayState })])
+        let popover: UIPopoverPresentationController = self.popoverVC!.popoverPresentationController!
+        popover.barButtonItem = sender
+        present(self.popoverVC!, animated: true, completion:nil)
     }
-    
 }

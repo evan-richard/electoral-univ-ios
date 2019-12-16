@@ -13,11 +13,13 @@ struct State {
 
     var name: String
     var identifier: String
+    var displayState: Bool = true
 
     var dictionary: [String: Any] {
         return [
           "name": name,
-          "identifier": identifier
+          "identifier": identifier,
+          "displayState": displayState
         ]
     }
 
