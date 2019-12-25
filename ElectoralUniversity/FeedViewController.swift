@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import ReadabilityKit
 
 typealias Animation = (UITableViewCell, IndexPath, UITableView) -> Void
 
@@ -218,7 +217,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.animateCells = false
-        let nearBottom = (3*scrollView.contentSize.height)/4
+        let nearBottom = (3*scrollView.contentSize.height)/6
         if (scrollView.contentOffset.y > nearBottom) && (!self.refreshing) && (!self.endOfNewTweets) {
             self.refreshing = true
             

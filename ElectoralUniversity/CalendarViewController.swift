@@ -17,6 +17,7 @@ class CalendarViewController: UIViewController, UIPopoverPresentationControllerD
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var swapButton: UIBarButtonItem!
     
     private var events: [Event] = []
     private var states: [String: State] = [:]
@@ -51,12 +52,12 @@ class CalendarViewController: UIViewController, UIPopoverPresentationControllerD
         self.eventListView.translatesAutoresizingMaskIntoConstraints = false
         self.eventCalendarView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.eventListView.isHidden = false
-        self.eventCalendarView.isHidden = true
+        self.eventListView.isHidden = true
+        self.eventCalendarView.isHidden = false
         
         let date: Date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "MMM dd, yyyy"
         let dateString = ("\(dateFormatter.string(from: date))")
         dateLabel.text = dateString
         
@@ -87,6 +88,11 @@ class CalendarViewController: UIViewController, UIPopoverPresentationControllerD
         self.eventCalendarView.isHidden = !self.eventCalendarView.isHidden
         self.eventListView.isHidden = !self.eventListView.isHidden
         self.eventListView.dismissKeyboard()
+        if self.eventCalendarView.isHidden {
+            self.swapButton.image = UIImage(systemName: "calendar.circle")
+        } else {
+            self.swapButton.image = UIImage(systemName: "line.horizontal.3")
+        }
     }
     
     @IBAction func displayConfigPopover(_ sender: UIBarButtonItem) {

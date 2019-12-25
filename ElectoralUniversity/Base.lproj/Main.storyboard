@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -162,7 +162,7 @@
                                 <color key="barTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <items>
                                     <navigationItem id="ahm-yd-1Tp">
-                                        <barButtonItem key="leftBarButtonItem" image="calendar.circle" catalog="system" id="tm1-pi-jrK">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="tm1-pi-jrK">
                                             <connections>
                                                 <action selector="swapViewAction:" destination="kVi-zb-Bbi" id="qwK-pL-7Oe"/>
                                             </connections>
@@ -193,6 +193,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="dN0-Sx-JYW" id="9wh-EO-2dF"/>
                         <outlet property="navigationBar" destination="Wvh-mS-PGd" id="h1a-dc-Sn3"/>
+                        <outlet property="swapButton" destination="tm1-pi-jrK" id="he2-oW-ddI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCA-av-bz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -508,10 +509,10 @@
         <image name="background_light.jpg" width="1280" height="853"/>
         <image name="backward.end" catalog="system" width="64" height="60"/>
         <image name="calendar" catalog="system" width="64" height="52"/>
-        <image name="calendar.circle" catalog="system" width="64" height="60"/>
         <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
         <image name="text.bubble" catalog="system" width="64" height="54"/>
     </resources>

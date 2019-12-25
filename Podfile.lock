@@ -108,6 +108,7 @@ PODS:
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.2.2)
   - Ji (5.0.0)
+  - JTAppleCalendar (8.0.3)
   - leveldb-library (1.22)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - JTAppleCalendar
   - ReadabilityKit
 
 SPEC REPOS:
@@ -148,6 +150,7 @@ SPEC REPOS:
     - Protobuf
   trunk:
     - Ji
+    - JTAppleCalendar
     - ReadabilityKit
 
 SPEC CHECKSUMS:
@@ -169,11 +172,12 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   Ji: d795fed288fe78658b404c88946d753b17d8d7f4
+  JTAppleCalendar: 932cadea40b1051beab10f67843451d48ba16c99
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   ReadabilityKit: d28ec50a317067fd1c06aa6518b05171bb19ce47
 
-PODFILE CHECKSUM: b1d869d31756a03564cbdbe1de8fd5c4846a7da5
+PODFILE CHECKSUM: 095ce4fde4327663d4e3f713be8b46fef7fa9220
 
 COCOAPODS: 1.8.4

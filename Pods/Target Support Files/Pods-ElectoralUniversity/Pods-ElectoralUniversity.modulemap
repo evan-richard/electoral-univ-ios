@@ -1,4 +1,4 @@
-module Pods_ElectoralUniversity {
+framework module Pods_ElectoralUniversity {
   umbrella header "Pods-ElectoralUniversity-umbrella.h"
 
   export *

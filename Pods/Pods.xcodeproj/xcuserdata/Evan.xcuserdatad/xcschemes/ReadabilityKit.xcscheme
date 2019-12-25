@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "03035B2CF0E8273E6AF06F788492EA85"
-               BuildableName = "libReadabilityKit.a"
+               BuildableName = "ReadabilityKit.framework"
                BlueprintName = "ReadabilityKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

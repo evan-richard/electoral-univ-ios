@@ -1,4 +1,4 @@
-module Ji {
+framework module Ji {
   umbrella header "Ji-umbrella.h"
 
   export *

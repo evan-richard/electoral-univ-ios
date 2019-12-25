@@ -72,12 +72,11 @@ class EventListContainer: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     private func addEvents() {
-        if (self.events.count > 1) {
+        if (self.events.count > 0) {
+            self.tableView.isHidden = false
             self.tableView.reloadData()
-        } else if (self.events.count == 1) {
-            
         } else {
-            
+            self.tableView.isHidden = true
         }
     }
     
@@ -97,7 +96,7 @@ class EventListContainer: UIView, UITableViewDataSource, UITableViewDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateObj = dateFormatter.date(from: event.dateStr)
-        dateFormatter.dateFormat = "EEE, dd MMM yyyy"
+        dateFormatter.dateFormat = "EEE, MMM dd yyyy"
         let formattedDateStr = ("\(dateFormatter.string(from: dateObj!))")
         
         cell.dateLabel.text = formattedDateStr

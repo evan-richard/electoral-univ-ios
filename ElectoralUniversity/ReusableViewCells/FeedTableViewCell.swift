@@ -76,7 +76,7 @@ class FeedTableViewCell: UITableViewCell {
         self.screenNameLabel.leadingAnchor.constraint(equalTo: self.nameLabel.trailingAnchor, constant: 6).isActive = true
         
         self.tweetBox.leadingAnchor.constraint(equalTo: self.profileImageView.trailingAnchor, constant: 8).isActive = true
-        self.tweetBox.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 12).isActive = true
+        self.tweetBox.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 8).isActive = true
         self.tweetBox.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12).isActive = true
         
         self.timeLabel.leadingAnchor.constraint(equalTo: self.profileImageView.trailingAnchor, constant: 12).isActive = true
